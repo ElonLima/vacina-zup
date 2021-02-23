@@ -3,6 +3,8 @@ package com.vacina.vacinabr.service;
 import com.vacina.vacinabr.model.Person;
 import com.vacina.vacinabr.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -18,19 +20,21 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public void createPerson(@Valid Person person) {
+    public ResponseEntity<Person> createPerson(@Valid Person person) {
         Optional<Person> emailOptional = personRepository
                                             .findPersonByEmail(person.getEmail());
         if (emailOptional.isPresent()){
-            throw new IllegalStateException("This email is already taken");
+            return new ResponseEntity<>(person, HttpStatus.BAD_REQUEST);
         }
 
         Optional<Person> cpfOptional = personRepository
                                         .findPersonByCpf(person.getCpf());
         if (cpfOptional.isPresent()){
-            throw new IllegalStateException("This cpf is already taken");
+            return new ResponseEntity<>(person, HttpStatus.BAD_REQUEST);
         }
 
         personRepository.save(person);
+
+        return new ResponseEntity<>(person, HttpStatus.CREATED);
     }
 }
