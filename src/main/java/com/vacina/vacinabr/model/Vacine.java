@@ -1,15 +1,25 @@
 package com.vacina.vacinabr.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import java.util.Date;
 
 @Entity
 @Table(name = "vacine")
 public class Vacine {
 
+    public Vacine(String name, String email, Date date) {
+        this.name = name;
+        this.email = email;
+        this.date = date;
+    }
+
+    public Vacine() {
+
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(
@@ -24,6 +34,7 @@ public class Vacine {
             nullable = false,
             columnDefinition = "TEXT"
     )
+    @Email
     private String email;
 
     @Column(
@@ -31,43 +42,5 @@ public class Vacine {
             updatable = false,
             nullable = false
     )
-    private String date;
-
-    public Vacine(String name, String email, String date) {
-        this.name = name;
-        this.email = email;
-        this.date = date;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
+    private Date date;
 }

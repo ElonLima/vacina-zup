@@ -1,24 +1,17 @@
 package com.vacina.vacinabr.model;
 
-import javax.persistence.*;
-import java.util.Date;
+import org.hibernate.validator.constraints.br.CPF;
 
-import static javax.persistence.GenerationType.*;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import java.util.Date;
 
 @Entity
 @Table(name = "person")
 public class Person {
 
     @Id
-    @SequenceGenerator(
-            name = "personID_sequence",
-            sequenceName = "personID_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "personID_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(
             name = "id",
             updatable = false,
@@ -39,6 +32,7 @@ public class Person {
             unique = true,
             columnDefinition = "TEXT"
     )
+    @Email(message = "E-mail inválido")
     private String email;
 
     @Column(
@@ -47,6 +41,7 @@ public class Person {
             unique = true,
             columnDefinition = "TEXT"
     )
+    @CPF(message = "CPF inválido")
     private String cpf;
 
     @Column(
@@ -63,39 +58,16 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Person() {
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
 }
