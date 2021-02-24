@@ -11,22 +11,13 @@ import java.util.Date;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(InvalidEmail.class)
-    public ResponseEntity<?> resourceNotFoundException (InvalidEmail notFoundException,
+    @ExceptionHandler(InvalidDataException.class)
+    public ResponseEntity<?> resourceNotFoundException (InvalidDataException notFoundException,
                                                         WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(new Date(),
                 notFoundException.getMessage(),
                 request.getDescription(false));
-        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(InvalidCPF.class)
-    public ResponseEntity<?> resourceNotFoundException (InvalidCPF notFoundException,
-                                                        WebRequest request) {
-        ErrorDetails errorDetails = new ErrorDetails(new Date(),
-                notFoundException.getMessage(),
-                request.getDescription(false));
-        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
