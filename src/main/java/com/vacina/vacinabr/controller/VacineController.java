@@ -1,5 +1,7 @@
 package com.vacina.vacinabr.controller;
 
+import com.vacina.vacinabr.dto.VacineDTO;
+import com.vacina.vacinabr.exception.InvalidDataException;
 import com.vacina.vacinabr.model.Vacine;
 import com.vacina.vacinabr.service.VacineService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class VacineController {
     }
 
     @PostMapping
-    public ResponseEntity<Vacine> vacineStatus(@Valid @RequestBody Vacine vacine) {
-        return vacineService.createVacine(vacine);
+    public ResponseEntity<Vacine> vacineStatus(@Valid @RequestBody VacineDTO vacineDTO) throws InvalidDataException {
+        return vacineService.createVacine(vacineDTO);
     }
 }
