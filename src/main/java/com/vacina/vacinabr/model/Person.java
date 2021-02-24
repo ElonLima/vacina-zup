@@ -51,23 +51,52 @@ public class Person {
     )
     private Date birthDate;
 
-    public Person(String name, String email, String cpf, Date birthDate) {
+    public Person() {
+    }
+
+    public Person(String name,
+                  @Email(message = "E-mail inválido") String email,
+                  @CPF(message = "CPF inválido") String cpf,
+                  Date birthDate) {
         this.name = name;
         this.email = email;
         this.cpf = cpf;
         this.birthDate = birthDate;
     }
 
-    public Person() {
+    public Long getId() {
+        return id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getCpf() {
         return cpf;
     }
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
 }

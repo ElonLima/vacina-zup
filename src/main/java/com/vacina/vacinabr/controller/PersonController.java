@@ -1,15 +1,15 @@
 package com.vacina.vacinabr.controller;
 
+import com.vacina.vacinabr.dto.PersonDTO;
+import com.vacina.vacinabr.exception.InvalidDataException;
 import com.vacina.vacinabr.model.Person;
 import com.vacina.vacinabr.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/person")
@@ -23,7 +23,14 @@ public class PersonController {
     }
 
     @PostMapping
-    public ResponseEntity<Person> createRegistry (@Valid @RequestBody Person person) {
-        return personService.createPerson(person);
+    public ResponseEntity<Person> createRegistry
+                                    (@RequestBody @Valid PersonDTO personDTO)
+            throws InvalidDataException {
+        return personService.createPerson(personDTO);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Person>> getPeople(){
+        return personService.getAllPeople();
     }
 }

@@ -12,5 +12,4 @@ public interface PersonMapper {
 
     Person toModel(PersonDTO personDTO);
 
-    PersonDTO toDTO(Person person);
 }
