@@ -12,10 +12,10 @@ import java.util.Date;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(InvalidDataException.class)
-    public ResponseEntity<?> resourceNotFoundException (InvalidDataException notFoundException,
+    public ResponseEntity<?> resourceNotFoundException (InvalidDataException invalidDataexception,
                                                         WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(new Date(),
-                notFoundException.getMessage(),
+                invalidDataexception.getMessage(),
                 request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }

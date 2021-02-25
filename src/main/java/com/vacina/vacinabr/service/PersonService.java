@@ -35,10 +35,6 @@ public class PersonService {
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<List<Person>> getAllPeople() {
-        return new ResponseEntity<>(personRepository.findAll(), HttpStatus.OK);
-    }
-
     private void ValidateData(String email, String cpf) throws InvalidDataException {
 
         Optional<Person> emailOptional = personRepository
