@@ -37,7 +37,7 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .useDefaultResponseMessages(false)
-                .globalResponseMessage(RequestMethod.POST, responseMessageForGET())
+                .globalResponseMessage(RequestMethod.POST, responseMessageForPOST())
                 .apiInfo(buildApiInfo());
     }
 
@@ -49,8 +49,7 @@ public class SwaggerConfig {
                 .build();
     }
 
-    private List<ResponseMessage> responseMessageForGET()
-    {
+    private List<ResponseMessage> responseMessageForPOST(){
         return new ArrayList<ResponseMessage>() {{
             add(new ResponseMessageBuilder()
                     .code(201)

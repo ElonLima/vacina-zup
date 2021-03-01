@@ -8,7 +8,9 @@ public class ErrorDetails {
     private final String messsage;
     private final String details;
 
-    public ErrorDetails(Date timestamp, String message, String details) {
+    public ErrorDetails(Date timestamp,
+                        String message,
+                        String details){
         super();
         this.timestamp = timestamp;
         this.messsage = message;

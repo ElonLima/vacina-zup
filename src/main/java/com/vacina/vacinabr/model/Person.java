@@ -1,17 +1,28 @@
 package com.vacina.vacinabr.model;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Date;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+
 @Entity
 @Table(name = "person")
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name = "person_sequence",
+            sequenceName = "person_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = SEQUENCE,
+            generator = "person_sequence"
+    )
     @Column(
             name = "id",
             updatable = false,
@@ -41,7 +52,7 @@ public class Person {
             unique = true,
             columnDefinition = "TEXT"
     )
-    @CPF(message = "CPF inválido")
+    @CPF @Length
     private String cpf;
 
     @Column(
