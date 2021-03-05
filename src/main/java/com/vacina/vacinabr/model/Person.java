@@ -40,7 +40,6 @@ public class Person {
     @Column(
             name = "email",
             nullable = false,
-            unique = true,
             columnDefinition = "TEXT"
     )
     @Email(message = "E-mail inválido")
@@ -49,7 +48,6 @@ public class Person {
     @Column(
             name = "cpf",
             nullable = false,
-            unique = true,
             columnDefinition = "TEXT"
     )
     @CPF @Length
