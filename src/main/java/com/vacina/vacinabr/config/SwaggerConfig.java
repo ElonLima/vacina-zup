@@ -23,7 +23,7 @@ import static springfox.documentation.builders.RequestHandlerSelectors.basePacka
 public class SwaggerConfig {
 
     private static final String BASE_PACKAGE = "com.vacina.vacinabr.controller";
-    private static final String API_TITLE = "Vacine System API";
+    private static final String API_TITLE = "Vaccine System API";
     private static final String API_DESCRIPTION = "Orange Talents Challenge 2";
     private static final String CONTACT_NAME = "Elon Lima Bezerra";
     private static final String CONTACT_GITHUB = "https://gtihub.com/ElonLima";

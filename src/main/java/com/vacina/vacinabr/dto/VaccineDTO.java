@@ -3,7 +3,7 @@ package com.vacina.vacinabr.dto;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-public class VacineDTO {
+public class VaccineDTO {
 
     @NotNull
     private String name;
@@ -13,13 +13,13 @@ public class VacineDTO {
 
     private Date date;
 
-    public VacineDTO() {
+    public VaccineDTO() {
     }
 
 
-    public VacineDTO(@NotNull String name,
-                     @NotNull String email,
-                     Date date) {
+    public VaccineDTO(@NotNull String name,
+                      @NotNull String email,
+                      Date date) {
         this.name = name;
         this.email = email;
         this.date = date;

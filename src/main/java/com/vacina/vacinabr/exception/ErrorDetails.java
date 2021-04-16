@@ -5,7 +5,7 @@ import java.util.Date;
 public class ErrorDetails {
 
     private final Date timestamp;
-    private final String messsage;
+    private final String message;
     private final String details;
 
     public ErrorDetails(Date timestamp,
@@ -13,7 +13,7 @@ public class ErrorDetails {
                         String details){
         super();
         this.timestamp = timestamp;
-        this.messsage = message;
+        this.message = message;
         this.details = details;
     }
 
@@ -21,8 +21,8 @@ public class ErrorDetails {
         return timestamp;
     }
 
-    public String getMesssage() {
-        return messsage;
+    public String getMessage() {
+        return message;
     }
 
     public String getDetails() {
