@@ -50,7 +50,7 @@ public class Person {
             nullable = false,
             columnDefinition = "TEXT"
     )
-    @CPF @Length
+    @CPF @Length(max = 11)
     private String cpf;
 
     @Column(
